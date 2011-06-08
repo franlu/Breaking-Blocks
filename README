@@ -1,0 +1,93 @@
+================================================================================
+=============================   BREAKING BLOCKS   ==============================
+================================================================================
+
+It is playing Breaking Blocks in a rectangular panel using the dimensions
+entered by the user to start the game.
+The board should create as blocks containing random numbers from 0 to 9. The
+player must choose a block to delete given by its position on the board. You can
+only delete a block that is at an adjacent (left, right, up or down the block
+chosen) labeled with the same number. Once you select a block deletes all blocks
+that have the same number and are adjacent to another block removed.
+The remaining blocks fall down without leaving any gaps in the columns of the
+board.
+If any column is empty then the columns to the left of the column selected block
+will move to the right, to fill gaps that have occurred. The player wins if at
+the end of the game has no block on the board.
+
+We used 2 different representations to the board:
+* vector <vector <char> >: classic board fixed size given as parameter.
+* list <list <char> >: Board column lists the board, where the columns are in
+                       turn lists.
+
+Files:
+======
+
+breaking_blocks.h
+    Specification of the class in charge of the game.
+
+breaking_blocks.cpp
+    Implementation of the class in charge of the game.
+
+tablero.h
+    Specification of the class to handle the board. Use #ifdef to select the
+    type of implementation.
+    Eg
+    #ifdef __VECTOR_
+        vector <vector <char>> _matriz;
+    #endif
+
+    #ifdef __LIST_
+        list <list <char>> _matriz;
+    #endif
+
+tablero_vector.cpp
+    Implementation of the class to handle the board by using a vector <vector <char> >
+
+tablero_lista.cpp
+    Implementation of the class to handle the board by using a list <list <char> >
+
+juego.cpp
+    Contains the main charge of producing the interface between the game and
+    player.
+
+
+***** Example *****
+
+Initial panel
+==============
+017362
+364244
+234442
+374284
+173481
+143723
+
+Choose position (3,4)
+=====================
+01____
+36_3_2
+23_262
+377284
+173481
+143723
+
+Choose position (4,2)
+=====================
+0_____
+3__3_2
+21_262
+36_284
+133481
+143723
+
+Choose position (6,3)
+=====================
+_0____
+_3_3_2
+_2_262
+_31284
+_16481
+_14723
+
+....
