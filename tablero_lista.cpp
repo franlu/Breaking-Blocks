@@ -2,16 +2,14 @@
 
 tablero::tablero(const pair<unsigned int,unsigned int>& par){
 
-	this._tam.first = par.first;
-	this._tam.first = par.second;
+	_tam = par;
 
 }
 
 tablero::tablero(const pair<unsigned int,unsigned int>& par, const list<char>& bloques){
 
-	this._tam.first = par.first;
-	this._tam.first = par.second;
-	this._matriz = bloques;
+	_tam = par;
+	_matriz = bloques;
 
 }
 
