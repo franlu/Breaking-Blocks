@@ -3,30 +3,38 @@
 tablero::tablero(const pair<unsigned int,unsigned int>& par){
 
 	_tam = par;
-	for (int i=0; i< _tam.first;i++)
-		for (int j=0; j< _tam.second;j++)
-		 _matriz[i][j] = '_';
-
+	vector<char> aux(par.second);
+	for (int i=0; i < par.first; i++)
+		_matriz[i] = aux; //_matriz.push_back(aux);
 }
-/**
-      @brief Construye un tablero a partir de una lista
-      @param par tamaño del tablero
-      @param bloques lista de caracteres conteniendo toda la informacion del tablero.
-      Constructor de la clase que recibe el tama~no del tablero dado por un par (x,y)
-      y una lista de caracteres que corresponden a los bloques del tablero dado por filas.
-    */
+
 tablero::tablero(const pair<unsigned int,unsigned int>& par, const list<char>& bloques){
 
 	_tam = par;
-	for (int i=0; i< _tam.first;i++)
-		for (int j=0; j< _tam.second;j++)
-			_matriz[i][j] = bloques[((3*i)+j)];
+	
+	int i = 0;
+	int j = 0;
+	list<char>::const_iterator it;
+	vector<char> aux(par.second);
+	for ( it = bloques.begin() ; it != bloques.end(); it++)
+		if (i<par.second){
+			aux[i] = *it;
+			++i;
+		}
+		else{
+			_matriz[j] = aux;
+			++j;
+			i = 0;
+			aux[i] = *it;
+			++i;
+		}
+	
 
 }
 
 char tablero::preguntar_posicion(const pair<unsigned int,unsigned int>& par) const {
 
-
+	return _matriz[par.first][par.second];
 
 
 }
@@ -47,11 +55,17 @@ pair<unsigned int,unsigned int> tablero::size() const {
 //implementar
 ostream& operator<< (ostream& os, const tablero& t){
 
-	/*for (int i=0; i<t.fil(); i++){
+pair<unsigned int,unsigned int> par;
+pair<unsigned int,unsigned int> tam = t.size();
+
+	 for (int i=0; i<tam.first; i++){
 		os << endl;
-		for (int j=0; j<t.col(); j++)
-			os << t(i,j) << ' ';
-	}*/
+		for (int j=0; j<tam.second; j++){
+			par.first = i;
+			par.second = j;
+			os << t.preguntar_posicion(par) << ' ';
+		}
+	}
 
 return os;
 
