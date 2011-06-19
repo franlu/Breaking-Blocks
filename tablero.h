@@ -20,7 +20,7 @@ class tablero {
       @param par tamaño del tablero
       @param bloques lista de caracteres conteniendo toda la informacion del
       tablero.
-      Constructor de la clase que recibe el tama~no del tablero dado por un par
+      Constructor de la clase que recibe el tamanio del tablero dado por un par
       (x,y) y una lista de caracteres que corresponden a los bloques del tablero
       dado por filas.
     */
