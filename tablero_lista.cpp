@@ -3,16 +3,19 @@
 tablero::tablero(const pair<unsigned int,unsigned int>& par){
 
 	_tam = par;
-	
-	for (int i = 0 ; i < _tam.first * _tam.second; i++ )
-
+	list<char> aux(_tam.second);
+	for (int i = 0 ; i < _tam.first; i++ ){
+		for (int j = 0 ; j < _tam.second; j++ )
+			aux.push_back('X');
+		_matriz.push_back(aux);
+	}
 
 }
 
 tablero::tablero(const pair<unsigned int,unsigned int>& par, const list<char>& bloques){
 
 	_tam = par;
-	list<int>::iterator it;
+	list<char>::iterator it;
 	for ( it=bloques.begin() ; it != bloques.end(); it++)
 																																	
 
