@@ -5,7 +5,7 @@
 #endif
 #include <list>
 #include <ostream>
-
+#include <iostream>
 using namespace std;
 
 class tablero {
