@@ -11,8 +11,9 @@ tablero::tablero(const pair<unsigned int,unsigned int>& par){
 tablero::tablero(const pair<unsigned int,unsigned int>& par, const list<char>& bloques){
 
 	_tam = par;
+	_matriz.reserve(_tam.first);
+	
 	vector<char> aux(_tam.second);
-	_matriz.reserve(_tam.first);	
 	list<char>::const_iterator it = bloques.begin();
 	
 	for (int i=0; i < _tam.first; i++){
