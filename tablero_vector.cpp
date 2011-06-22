@@ -11,23 +11,18 @@ tablero::tablero(const pair<unsigned int,unsigned int>& par){
 tablero::tablero(const pair<unsigned int,unsigned int>& par, const list<char>& bloques){
 
 	_tam = par;
-	
-	int i=0;
-	list<char>::const_iterator it;
 	vector<char> aux(_tam.second);
+	_matriz.reserve(_tam.first);	
+	list<char>::const_iterator it = bloques.begin();
 	
-	for ( it = bloques.begin(); it != bloques.end(); it++){
-		if (i<_tam.second)
-			aux[i] = *it;
-		else{
-			_matriz.push_back(aux);
-			aux.clear();
-			i=0;
-			aux[i] = *it;
-		}
-		i++;
-	}	
-	
+	for (int i=0; i < _tam.first; i++){
+	    aux.clear();
+            for (int j=0; j < _tam.second; j++){
+		aux.push_back(*it);
+		it++;
+            }
+            _matriz.push_back(aux);
+	}
 }
 
 char tablero::preguntar_posicion(const pair<unsigned int,unsigned int>& par) const {
@@ -48,18 +43,17 @@ pair<unsigned int,unsigned int> tablero::size() const {
 
 }
 
-
 ostream& operator<< (ostream& os, const tablero& t){
 
 pair<unsigned int,unsigned int> par;
 pair<unsigned int,unsigned int> tam = t.size();
 
-	 for (int i=0; i<tam.first-1; i++){
+	 for (int i=0; i< tam.first; i++){
 		os << endl;
-		for (int j=0; j<tam.second; j++){
+		for (int j=0; j< tam.second; j++){
 			par.first = i;
 			par.second = j;
-			os << t.preguntar_posicion(par) << ' ';
+			os << t.preguntar_posicion(par);
 		}
 		
 	}
