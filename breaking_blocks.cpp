@@ -2,7 +2,6 @@
 
 breaking_blocks::breaking_blocks(const pair<unsigned int,unsigned int>& par):_tablero(par){
     
-    //_tablero(par);
     
 }
 
