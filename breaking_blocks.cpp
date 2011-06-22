@@ -1,16 +1,16 @@
 #include "breaking_blocks.h"
 
-breaking_blocks::breaking_blocks(const pair<unsigned int,unsigned int>& par){
+breaking_blocks::breaking_blocks(const pair<unsigned int,unsigned int>& par):_tablero(par){
     
-    _tablero(par);
+    //_tablero(par);
     
 }
 
-breaking_blocks::breaking_blocks(const string& archivo){
+/*breaking_blocks::breaking_blocks(const string& archivo){
     
     
     
-}
+}*/
 
 unsigned int breaking_blocks::eliminar_posicion(const pair<unsigned int,unsigned int>& par){
     
