@@ -7,27 +7,51 @@ using namespace std;
 int main(int argc, char *argv[]){
     
 pair<unsigned int,unsigned int> par(5,5);
-pair<unsigned int,unsigned int> pos(6,6);
-vector<char> aux(par.second,'X');
-list<char> lista1(36,'Z');
+list<char> lista1;
 
-tablero t(par);
-tablero t1(pos,lista1);
+lista1.push_back ('1');
+lista1.push_back ('1');
+lista1.push_back ('3');
+lista1.push_back ('4');
+lista1.push_back ('0');
 
+lista1.push_back('5');
+lista1.push_back('6');
+lista1.push_back('7');
+lista1.push_back('8');
+lista1.push_back('1');
+
+lista1.push_back('9');
+lista1.push_back('1');
+lista1.push_back('2');
+lista1.push_back('3');
+lista1.push_back('0');
+
+lista1.push_back('4');
+lista1.push_back('5');
+lista1.push_back('2');
+lista1.push_back('1');
+lista1.push_back('7');
+
+lista1.push_back('9');
+lista1.push_back('7');
+lista1.push_back('4');
+lista1.push_back('3');
+lista1.push_back('9');
+
+tablero t1(par,lista1);
 	
-	cout << "BREAKING BLOCKS" << endl;
-        cout << "===============" << endl;
+	cout << endl << "   BREAKING BLOCKS   " << endl;
+        cout << "=====================" << endl;
 
-        /*for (int i=0; i < par.second; i++)
-           cout << aux[i] << "_";
-        cout << t << endl;
         
-        cout << "Posicion (4,4) = " << t.preguntar_posicion(pos) << endl;
-        */
-        cout << t1 <<endl;
+            cout << t1 <<endl;
+            pair<unsigned int,unsigned int> par1(0,0);
+            cout << endl << "Eliminadas = " << t1.eliminar_posicion(par1);
+            cout << t1 <<endl;
               
 	
-        cout << "===============" << endl;
+        cout << endl << "=====================" << endl;
 
 }
 
