@@ -24,6 +24,7 @@ tablero::tablero(const pair<unsigned int,unsigned int>& par, const list<char>& b
             }
             _matriz.push_back(aux);
 	}
+
 }
 
 char tablero::preguntar_posicion(const pair<unsigned int,unsigned int>& par) const {
@@ -33,9 +34,30 @@ char tablero::preguntar_posicion(const pair<unsigned int,unsigned int>& par) con
 
 int tablero::eliminar_posicion(const pair<unsigned int,unsigned int>& par){
 
+char aux = _matriz[par.first][par.second];
+unsigned int eliminadas = 0;
 
+int inicioi = par.first - 1;
+int fini = par.first + 2;
 
+int inicioj = par.second - 1;
+int finj = par.second + 2;
 
+	if (aux == '_')
+		return eliminadas;
+	else{
+		//recorrer posiciones adyacentes
+		for (int i = inicioi; i < fini; i++) // comprobar limites de la matriz para posicion en el borde
+			for (int j= inicioj; j< finj; j++)
+				if ((_matriz.at(i)).at(j) == aux){
+					_matriz[i][j] = '_';
+					eliminadas++;
+				}/*else{ char peta = _matriz.at(i).at(j);
+					cout << peta << "][" << endl; }*/
+		
+		return eliminadas;
+	}
+	
 }
 
 pair<unsigned int,unsigned int> tablero::size() const {
@@ -50,7 +72,7 @@ pair<unsigned int,unsigned int> par;
 pair<unsigned int,unsigned int> tam = t.size();
 
 	 for (int i=0; i< tam.first; i++){
-		os << endl;
+		os << endl << "\t";
 		for (int j=0; j< tam.second; j++){
 			par.first = i;
 			par.second = j;
