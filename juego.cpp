@@ -4,54 +4,83 @@
 
 using namespace std;
 
+void menu(){
+    
+    cout << "1.- Eliminar Posicion." << endl;
+    cout << "2.- Es Posible eliminar mas bloques." << endl;
+    cout << "3.- Numero de bloques eliminados." << endl;
+    cout << "4.- Imprimir tablero." << endl;
+    cout << "5.- Puntuacion." << endl;
+    cout << "6.- Salir." << endl;
+     
+}
+
 int main(int argc, char *argv[]){
     
+pair<unsigned int,unsigned int> par_eli;    
 pair<unsigned int,unsigned int> par(5,5);
-list<char> lista1;
 
-lista1.push_back ('1');
-lista1.push_back ('1');
-lista1.push_back ('3');
-lista1.push_back ('4');
-lista1.push_back ('0');
+unsigned int opcion;
+int puntos = 0;
 
-lista1.push_back('5');
-lista1.push_back('6');
-lista1.push_back('7');
-lista1.push_back('8');
-lista1.push_back('1');
+   
+    string ruta;
+    cout << "Introduce la ruta hacia el fichero que contiene el tablero:" << endl;
+    cin >> ruta;
+    breaking_blocks bb(ruta);
+    cout << endl << "   BREAKING BLOCKS   " << endl;
+            cout << "=====================" << endl;
+                bb.imprimir_tablero();
+    cout << endl << "=====================" << endl;
+    
+    
+    menu();
+    cout << endl << "Elige opcion " << endl;
+    cin >> opcion;
+    
 
-lista1.push_back('9');
-lista1.push_back('1');
-lista1.push_back('2');
-lista1.push_back('3');
-lista1.push_back('0');
-
-lista1.push_back('4');
-lista1.push_back('5');
-lista1.push_back('2');
-lista1.push_back('1');
-lista1.push_back('7');
-
-lista1.push_back('9');
-lista1.push_back('7');
-lista1.push_back('4');
-lista1.push_back('3');
-lista1.push_back('9');
-
-tablero t1(par,lista1);
-	
-	cout << endl << "   BREAKING BLOCKS   " << endl;
-        cout << "=====================" << endl;
-
+while (opcion >0 && opcion < 6) {
+    
         
-            cout << t1 <<endl;
-            pair<unsigned int,unsigned int> par1(0,0);
-            cout << endl << "Eliminadas = " << t1.eliminar_posicion(par1);
-            cout << t1 <<endl;
-              
-	
-        cout << endl << "=====================" << endl;
+    switch(opcion){
+        
+        case 1:
+            cout << "Intoduce la coordenada i" << endl;
+            cin >> par_eli.first;
+            cout << "Intoduce la coordenada j" << endl;
+            cin >> par_eli.second;
+            
+            cout << "Has conseguido " << bb.eliminar_posicion(par_eli) << " puntos." << endl;
+            puntos += bb.eliminar_posicion(par_eli);
+            
+            break;
+        case 2:
+            if (bb.mas_movimientos())
+                cout << "Utiliza tus neuronillas, aún se pueden eliminar mas bloques" << endl;
+            else
+                cout << "Imposible eliminar mas bloques, consulta tu puntuacion." << endl;
+            break;
+        case 3:
+            cout << "Hasta el momento has eliminado " << bb.bloques() << "bloques." << endl;
+            break;
+        case 4:
+            cout << endl << "   BREAKING BLOCKS   " << endl;
+                    cout << "=====================" << endl;
+                            bb.imprimir_tablero();
+            cout << endl << "=====================" << endl;
+            break;
+        case 5:
+            cout << "Total:" << puntos << "puntos." << endl;
+            break;
+        default:
+            break;       
+        
+    }
+    
+    menu();
+    cout << endl << "Elige opcion " << endl;
+    cin >> opcion;
+}
 
 }
 
