@@ -43,20 +43,34 @@ int fini = par.first + 2;
 int inicioj = par.second - 1;
 int finj = par.second + 2;
 
+
+//Indices dentro del tablero
+if (inicioi < 0)
+	inicioi = 0;
+if (fini > _tam.first)
+	fini = _tam.first;
+
+if (inicioj < 0)
+	inicioj = 0;
+if (finj > _tam.second)
+	finj = _tam.second;
+	
+
 	if (aux == '_')
 		return eliminadas;
 	else{
 		//recorrer posiciones adyacentes
-		for (int i = inicioi; i < fini; i++) // comprobar limites de la matriz para posicion en el borde
+		for (int i = inicioi; i < fini; i++)
 			for (int j= inicioj; j< finj; j++)
 				if ((_matriz.at(i)).at(j) == aux){
 					_matriz[i][j] = '_';
 					eliminadas++;
-				}/*else{ char peta = _matriz.at(i).at(j);
-					cout << peta << "][" << endl; }*/
-		
+				}
+				
 		return eliminadas;
 	}
+	
+	//recolocar filas-columnas libres
 	
 }
 
