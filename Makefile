@@ -6,10 +6,15 @@ INCLUDE = include
 BIN = bin
 OBJ = obj
 #LIB = lib
+TDD = test
 RM = rm
 
 # Rules
-all: bb_vector bb_lista clean
+all: tab_vector bb_vector bb_lista clean
+tab_vector: $(SRC)/tablero_vector.cpp $(TDD)/tab_vector.cpp
+	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(SRC)/tablero_vector.cpp
+	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(TDD)/tab_vector.cpp
+	$(CXX) -o $(BIN)/tab_vector $(OBJ)/tablero_vector.o $(OBJ)/tab_vector.o
 bb_vector: $(SRC)/breaking_blocks.cpp $(SRC)/tablero_vector.cpp $(SRC)/juego.cpp
 	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(SRC)/breaking_blocks.cpp 
 	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(SRC)/tablero_vector.cpp 
