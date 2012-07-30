@@ -1,4 +1,4 @@
-#include "tablero.h"
+#include "../include/tablero.h"
 
 tablero::tablero(const pair<unsigned int,unsigned int>& par){
 
