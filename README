@@ -44,7 +44,7 @@ include/tablero.h
 src/tablero_vector.cpp
     Implementation of the class to handle the board by using a vector <vector <char> >
 
-tablero_lista.cpp
+src/tablero_lista.cpp
     Implementation of the class to handle the board by using a list <list <char> >
 
 src/juego.cpp
