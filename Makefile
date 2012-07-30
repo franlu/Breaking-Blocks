@@ -1,6 +1,7 @@
 # Simple Makefile
 CXX = g++ 
 CFLAGS = -Wall -g
+OBJ = /obj/
 all: bb_vector bb_lista
 bb_vector: breaking_blocks.cpp tablero_vector.cpp juego.cpp
 	$(CXX) $(CFLAGS) -D __VECTOR_ -c breaking_blocks.cpp 
