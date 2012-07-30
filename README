@@ -23,13 +23,13 @@ We used 2 different representations to the board:
 Files:
 ======
 
-breaking_blocks.h
+include/breaking_blocks.h
     Specification of the class in charge of the game.
 
-breaking_blocks.cpp
+src/breaking_blocks.cpp
     Implementation of the class in charge of the game.
 
-tablero.h
+include/tablero.h
     Specification of the class to handle the board. Use #ifdef to select the
     type of implementation.
     Eg
@@ -41,13 +41,13 @@ tablero.h
         list <list <char>> _matriz;
     #endif
 
-tablero_vector.cpp
+src/tablero_vector.cpp
     Implementation of the class to handle the board by using a vector <vector <char> >
 
 tablero_lista.cpp
     Implementation of the class to handle the board by using a list <list <char> >
 
-juego.cpp
+src/juego.cpp
     Contains the main charge of producing the interface between the game and
     player.
 
