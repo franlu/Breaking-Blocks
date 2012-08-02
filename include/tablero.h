@@ -30,7 +30,7 @@ class tablero {
       @param par Coordenadas de las que se quiere obtener un caracter
       @return Devuelve el caracter de la posicion (par.first, par.second)
       Funcion que devuelve el elemento que ocupa las coordenadas del tablero
-      dadas por un par (x,y) pasado como parametro. En el caso en que en es
+      dadas por un par (x,y) pasado como parametro. En el caso en que en esa
       posicion no haya ningun bloque entonces se devolvera el caracter '_'.
     */
     char preguntar_posicion(const pair<unsigned int,unsigned int>& par) const;
