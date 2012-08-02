@@ -28,8 +28,11 @@ tablero::tablero(const pair<unsigned int,unsigned int>& par, const list<char>& b
 }
 
 char tablero::preguntar_posicion(const pair<unsigned int,unsigned int>& par) const {
-
-	return _matriz[par.first][par.second];
+    
+    if (_matriz[par.first][par.second] == ' ')
+        return '_';
+    else
+        return _matriz[par.first][par.second];
 }
 
 int tablero::eliminar_posicion(const pair<unsigned int,unsigned int>& par){
