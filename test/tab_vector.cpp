@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "../include/tablero.h"
 
@@ -11,7 +13,7 @@ const char* names [] =
 "tablero", "tablero1", "preguntar_posicion", "eliminar_posicion", "size", "operator<<"
 };
 int index = 0;
-if (argc == 2){
+if (argc >= 2){
 if (strcmp(argv[1],names[0]) == 0 )
     index = 1;
 else if (strcmp(argv[1],names[1]) == 0)
@@ -65,8 +67,11 @@ switch(index){
                 cout << "===============================================================================" << endl;
                     pair<unsigned int,unsigned int> par_4(4,4);
                     tablero tab4(par_4);
-                    pair<unsigned int,unsigned int> par4a(1,1);
-                    cout << tab4.eliminar_posicion(par4a) << endl;
+                    cout << tab4 << endl;
+                    pair<unsigned int,unsigned int> par4a(atoi(argv[2]),atoi(argv[3]));
+                    cout << endl << "bloque a eliminar: " << par4a.first << "," << par4a.second << endl;
+                    cout << "bloques eliminados: " << tab4.eliminar_posicion(par4a) << endl;
+                    cout << tab4 << endl;
         cout << endl << "================================================OK==============================" << endl;
         }
         break;
