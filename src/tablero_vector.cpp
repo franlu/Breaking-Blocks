@@ -4,7 +4,7 @@ tablero::tablero(const pair<unsigned int,unsigned int>& par){
 
     _tam = par;
     vector<char> aux(par.second,'X');
-    for (int i=0; i < par.first; i++)
+    for (unsigned int i=0; i < par.first; i++)
         _matriz.push_back(aux);
 }
 
@@ -16,9 +16,9 @@ tablero::tablero(const pair<unsigned int,unsigned int>& par, const list<char>& b
     vector<char> aux(_tam.second);
     list<char>::const_iterator it = bloques.begin();
 
-    for (int i=0; i < _tam.first; i++){
+    for (unsigned int i=0; i < _tam.first; i++){
         aux.clear();
-            for (int j=0; j < _tam.second; j++){
+            for (unsigned int j=0; j < _tam.second; j++){
         aux.push_back(*it);
         it++;
             }
@@ -40,11 +40,11 @@ int tablero::eliminar_posicion(const pair<unsigned int,unsigned int>& par){
 char aux = _matriz[par.first][par.second];
 unsigned int eliminadas = 0;
 
-int inicioi = par.first - 1;
-int fini = par.first + 2;
+unsigned int inicioi = par.first - 1;
+unsigned int fini = par.first + 2;
 
-int inicioj = par.second - 1;
-int finj = par.second + 2;
+unsigned int inicioj = par.second - 1;
+unsigned int finj = par.second + 2;
 
 
 //Indices dentro del tablero
@@ -63,26 +63,24 @@ if (finj > _tam.second)
         return eliminadas;
     else{
         //recorrer posiciones adyacentes
-        for (int i = inicioi; i < fini; i++)
-            for (int j= inicioj; j< finj; j++)
+        for (unsigned int i = inicioi; i < fini; i++)
+            for (unsigned int j= inicioj; j< finj; j++)
                  if ((_matriz.at(i)).at(j) == aux){
                     _matriz[i][j] = '_';
                     eliminadas++;
                  }
-
+        //recolocar bloques libres
+        if (eliminadas > 0){
+            for (unsigned int i=1; i< _tam.first; i++)
+                for (unsigned int j=0; j< _tam.second; j++)
+                    if (((_matriz.at(i)).at(j) == '_') and ((_matriz.at(i-1)).at(j) != '_' )){
+                        char a = (_matriz.at(i-1)).at(j);
+                        _matriz[i][j] = a;
+                        _matriz[i-1][j] = '_';
+                    }
+        }
+     
         return eliminadas;
-    }
-
-    //recolocar bloques libres
-    if (eliminadas > 0){
-        unsigned int recolocar = 0;
-        for (int i=1; i< _tam.first; i++)
-            for (int j=0; j< _tam.second; j++)
-                if ((_matriz.at(i)).at(j) == '_' && _matriz.at(i-1)).at(j) != '_' ){
-                    char a = _matriz.at(i-1)).at(j)
-                    _matriz.at(i)).at(j) = a
-                    _matriz.at(i-1)).at(j) = '_'
-                }
     }
 }
 
@@ -97,9 +95,9 @@ ostream& operator<< (ostream& os, const tablero& t){
 pair<unsigned int,unsigned int> par;
 pair<unsigned int,unsigned int> tam = t.size();
 
-    for (int i=0; i< tam.first; i++){
+    for (unsigned int i=0; i< tam.first; i++){
         os << endl << "\t";
-        for (int j=0; j< tam.second; j++){
+        for (unsigned int j=0; j< tam.second; j++){
             par.first = i;
             par.second = j;
             os << t.preguntar_posicion(par);
@@ -109,4 +107,4 @@ pair<unsigned int,unsigned int> tam = t.size();
 
 return os;
 
-}
+}	
