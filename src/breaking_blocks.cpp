@@ -1,4 +1,4 @@
-#include "breaking_blocks.h"
+#include "../include/breaking_blocks.h"
 #include <iostream>
 #include <fstream>
 
@@ -8,20 +8,8 @@ breaking_blocks::breaking_blocks(const pair<unsigned int,unsigned int>& par):_ta
 
 }
 
-breaking_blocks::breaking_blocks(const string& archivo){
-
-    string palabra;
-    ifstream fich(archivo);
-    pair<unsigned int,unsigned int> par;
-    const list<char> bloques;
-
-    while (fich >> palabra) {
-        cout << palabra << endl;
-    }
-
-    fich.close();
-
-    _tablero(par,bloques);
+breaking_blocks::breaking_blocks(const string& archivo):_tablero(archivo){
+    
 }
 
 unsigned int breaking_blocks::eliminar_posicion(const pair<unsigned int,unsigned int>& par){
@@ -39,8 +27,8 @@ bool breaking_blocks::mas_movimientos() const {
     pair<unsigned int,unsigned int> tam = _tablero.size();
     pair<unsigned int,unsigned int> par,par2;
 
-    for (int i=0; i< tam.first; i++)
-    	for (int j=0; j< tam.second; j++){
+    for (unsigned int i=0; i< tam.first; i++)
+        for (unsigned int j=0; j< tam.second; j++){
             par.first = i;
             par.second = j;
             c =_tablero.preguntar_posicion(par);
@@ -48,9 +36,9 @@ bool breaking_blocks::mas_movimientos() const {
             if (c != '_') {
                 //comprobar posciones adyacentes a par
                 int inicioi = par.first - 1;
-                int fini = par.first + 2;
+                unsigned int fini = par.first + 2;
                 int inicioj = par.second - 1;
-                int finj = par.second + 2;
+                unsigned int finj = par.second + 2;
 
                 //Indices dentro del tablero
                 if (inicioi < 0)
@@ -64,8 +52,8 @@ bool breaking_blocks::mas_movimientos() const {
 
                 //recorrer submatriz
                 aux = 0;
-                for (int i = inicioi; i < fini; i++)
-                            for (int j= inicioj; j< finj; j++){
+                for (unsigned int i = inicioi; i < fini; i++)
+                            for (unsigned int j= inicioj; j< finj; j++){
                                     par2.first = i;
                                     par2.second = j;
                                     if (_tablero.preguntar_posicion(par2) == c)
@@ -86,13 +74,13 @@ unsigned int breaking_blocks::bloques() const {
     pair<unsigned int,unsigned int> tam = _tablero.size();
     pair<unsigned int,unsigned int> par;
 
-    for (int i=0; i< tam.first; i++)
-    	for (int j=0; j< tam.second; j++){
+    for (unsigned int i=0; i< tam.first; i++)
+        for (unsigned int j=0; j< tam.second; j++){
             par.first = i;
             par.second = j;
             if (_tablero.preguntar_posicion(par) == '_')
                 aux++;
-	}
+    }
 
     return aux;
 

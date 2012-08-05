@@ -1,6 +1,7 @@
 #ifndef __BREAKING_BLOCKS__
 #define __BREAKING_BLOCKS__
-#include "tablero.h"
+
+#include "../include/tablero.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class breaking_blocks {
       @brief Construye un tablero cargandolo de un archivo
       @param archivo nombre del archivo donde esta el tablero
 
-      Carga un tablero guardado en un archivo, si no existe o hay algun problema el tablero deberia estar vario.
+      Carga un tablero guardado en un archivo, si no existe o hay algun problema el tablero deberia estar vacio.
     */
     breaking_blocks(const string& archivo);
 
