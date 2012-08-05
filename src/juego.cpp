@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "breaking_blocks.h"
+#include "../include/breaking_blocks.h"
 
 using namespace std;
 
@@ -21,7 +21,7 @@ pair<unsigned int,unsigned int> par_eli;
 pair<unsigned int,unsigned int> par(5,5);
 
 unsigned int opcion;
-int puntos_conseguidos = 0
+int puntos_conseguidos = 0;
 int puntos_totales = 0;
 
    
@@ -66,7 +66,7 @@ while (opcion >0 && opcion < 6) {
                 cout << "Imposible eliminar mas bloques, consulta tu puntuacion." << endl;
             break;
         case 3:
-            cout << "Hasta el momento has eliminado " << bb.bloques() << "bloques." << endl;
+            cout << "Hasta el momento has eliminado " << bb.bloques() << " bloques." << endl;
             break;
         case 4:
             cout << endl << "   BREAKING BLOCKS   " << endl;
@@ -75,7 +75,7 @@ while (opcion >0 && opcion < 6) {
             cout << endl << "=====================" << endl;
             break;
         case 5:
-            cout << "Total:" << puntos_totales << "puntos." << endl;
+            cout << "Total: " << puntos_totales << " puntos." << endl;
             break;
         default:
             break;       
