@@ -10,7 +10,7 @@ int main(int argc, char* argv[]){
 
 const char* names [] = 
 {
-"tablero", "tablero1", "preguntar_posicion", "eliminar_posicion", "size", "operator<<"
+"tablero", "tablero1", "preguntar_posicion", "eliminar_posicion", "size", "operator<<", "tablero2"
 };
 int index = 0;
 if (argc >= 2){
@@ -26,6 +26,8 @@ else if (strcmp(argv[1],names[1]) == 0)
                         index = 5;
                     else if (strcmp(argv[1],names[5]) == 0)
                              index = 6;
+                          else if (strcmp(argv[1],names[6]) == 0)
+                             index = 7;
 }               
 
 switch(index){
@@ -94,6 +96,15 @@ switch(index){
                     pair<unsigned int,unsigned int> par_6(6,6);
                     tablero tab6(par_6);
                     cout << tab6 << endl;
+        cout << endl << "================================================OK==============================" << endl;
+        }
+        break;
+    case 7:
+        {
+        cout << endl << "tablero(const string& archivo);" << endl;
+                cout << "===============================================================================" << endl;
+                    tablero tab7("helpers/tablero_6x6.txt");
+                    cout << tab7 << endl;
         cout << endl << "================================================OK==============================" << endl;
         }
         break;
