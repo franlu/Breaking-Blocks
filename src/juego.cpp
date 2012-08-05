@@ -21,7 +21,8 @@ pair<unsigned int,unsigned int> par_eli;
 pair<unsigned int,unsigned int> par(5,5);
 
 unsigned int opcion;
-int puntos = 0;
+int puntos_conseguidos = 0
+int puntos_totales = 0;
 
    
     string ruta;
@@ -45,14 +46,18 @@ while (opcion >0 && opcion < 6) {
     switch(opcion){
         
         case 1:
-            cout << "Intoduce la coordenada i" << endl;
-            cin >> par_eli.first;
-            cout << "Intoduce la coordenada j" << endl;
-            cin >> par_eli.second;
+            if (!bb.mas_movimientos())
+                cout << "Imposible eliminar mas bloques, consulta tu puntuacion." << endl;
+            else{
+                cout << "Intoduce la coordenada i" << endl;
+                cin >> par_eli.first;
+                cout << "Intoduce la coordenada j" << endl;
+                cin >> par_eli.second;
             
-            cout << "Has conseguido " << bb.eliminar_posicion(par_eli) << " puntos." << endl;
-            puntos += bb.eliminar_posicion(par_eli);
-            
+                puntos_conseguidos = bb.eliminar_posicion(par_eli);
+                cout << "Has conseguido " << puntos_conseguidos  << " puntos." << endl;
+                puntos_totales += puntos_conseguidos;
+            }
             break;
         case 2:
             if (bb.mas_movimientos())
@@ -70,7 +75,7 @@ while (opcion >0 && opcion < 6) {
             cout << endl << "=====================" << endl;
             break;
         case 5:
-            cout << "Total:" << puntos << "puntos." << endl;
+            cout << "Total:" << puntos_totales << "puntos." << endl;
             break;
         default:
             break;       
