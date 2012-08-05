@@ -15,7 +15,7 @@ all: tab_vector bb_vector bb_lista clean
 tab_vector:
 	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(SRC)/tablero_vector.cpp
 	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(TDD)/tab_vector.cpp
-	$(CP) *.o $(OBJ)
+	$(CP) *.o $(OBJ)/
 	$(RM) *.o
 	$(CXX) -o $(BIN)/tab_vector $(OBJ)/tablero_vector.o $(OBJ)/tab_vector.o
 bb_vector: 
