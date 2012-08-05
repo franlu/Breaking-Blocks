@@ -19,9 +19,11 @@ tab_vector:
 	$(RM) *.o
 	$(CXX) -o $(BIN)/tab_vector $(OBJ)/tablero_vector.o $(OBJ)/tab_vector.o
 bb_vector: 
+	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(SRC)/tablero_vector.cpp
 	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(SRC)/breaking_blocks.cpp 
-	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(SRC)/tablero_vector.cpp 
-	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(SRC)/juego.cpp 
+	$(CXX) $(CFLAGS) -D __VECTOR_ -c $(SRC)/juego.cpp
+	$(CP) *.o $(OBJ)/
+	$(RM) *.o 
 	$(CXX) -o $(BIN)/bb_vector $(OBJ)/breaking_blocks.o $(OBJ)/tablero_vector.o $(OBJ)/juego.o 
 bb_lista: 
 	$(CXX) $(CFLAGS) -D __LIST_ -c $(SRC)/breaking_blocks.cpp 
