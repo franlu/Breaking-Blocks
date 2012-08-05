@@ -73,8 +73,17 @@ if (finj > _tam.second)
         return eliminadas;
     }
 
-    //recolocar filas-columnas libres
-
+    //recolocar bloques libres
+    if (eliminadas > 0){
+        unsigned int recolocar = 0;
+        for (int i=1; i< _tam.first; i++)
+            for (int j=0; j< _tam.second; j++)
+                if ((_matriz.at(i)).at(j) == '_' && _matriz.at(i-1)).at(j) != '_' ){
+                    char a = _matriz.at(i-1)).at(j)
+                    _matriz.at(i)).at(j) = a
+                    _matriz.at(i-1)).at(j) = '_'
+                }
+    }
 }
 
 pair<unsigned int,unsigned int> tablero::size() const {
