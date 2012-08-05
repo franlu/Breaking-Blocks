@@ -1,5 +1,10 @@
 #include "../include/tablero.h"
 
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+
 tablero::tablero(const pair<unsigned int,unsigned int>& par){
 
     _tam = par;
@@ -25,6 +30,33 @@ tablero::tablero(const pair<unsigned int,unsigned int>& par, const list<char>& b
             _matriz.push_back(aux);
     }
 
+}
+
+tablero::tablero(const string& archivo){
+
+    string palabra;
+    ifstream fich(archivo.c_str());
+    vector<string> aux;
+    while (fich >> palabra) {
+        aux.push_back(palabra);
+    }
+    
+    fich.close();
+    
+    for (unsigned int i=0; i < aux.size(); i++)
+        cout << aux[i] << endl;
+    
+    pair<unsigned int,unsigned int> par(atoi(aux[0].c_str()),atoi(aux[1].c_str()));
+    _tam = par;
+    
+    string::iterator it;
+    vector<char> vc;
+    for(int i=2; i < aux.size(); i++){
+        for ( it=aux[i].begin() ; it < aux[i].end(); it++ )
+            vc.push_back(*it);
+        _matriz.push_back(vc);
+        vc.clear();
+    }
 }
 
 char tablero::preguntar_posicion(const pair<unsigned int,unsigned int>& par) const {

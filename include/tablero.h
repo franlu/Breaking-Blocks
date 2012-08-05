@@ -25,6 +25,9 @@ class tablero {
       dado por filas.
     */
     tablero(const pair<unsigned int,unsigned int>& par, const list<char>& bloques);
+    
+    tablero(const string& archivo);
+    
     /**
       @brief Obtiene un caracter del tablero
       @param par Coordenadas de las que se quiere obtener un caracter
