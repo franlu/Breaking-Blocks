@@ -65,8 +65,10 @@ switch(index){
         {
         cout << endl << "int tablero::eliminar_posicion(const pair<unsigned int,unsigned int>& par)" << endl;
                 cout << "===============================================================================" << endl;
-                    pair<unsigned int,unsigned int> par_4(4,4);
-                    tablero tab4(par_4);
+                    pair<unsigned int,unsigned int> par_4(3,3);
+                    char tableroc[] = {'1','3','2','7','1','2','8','1','0'};
+                    list<char> bloques (tableroc, tableroc + sizeof(tableroc) / sizeof(char) );
+                    tablero tab4(par_4,bloques);
                     cout << tab4 << endl;
                     pair<unsigned int,unsigned int> par4a(atoi(argv[2]),atoi(argv[3]));
                     cout << endl << "bloque a eliminar: " << par4a.first << "," << par4a.second << endl;
