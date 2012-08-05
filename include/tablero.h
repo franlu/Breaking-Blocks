@@ -26,6 +26,12 @@ class tablero {
     */
     tablero(const pair<unsigned int,unsigned int>& par, const list<char>& bloques);
     
+    /**
+      @brief Construye un tablero cargandolo de un archivo
+      @param archivo nombre del archivo donde esta el tablero
+
+      Carga un tablero guardado en un archivo, si no existe o hay algun problema el tablero deberia estar vacio.
+    */
     tablero(const string& archivo);
     
     /**
