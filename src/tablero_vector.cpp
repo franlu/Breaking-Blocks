@@ -42,16 +42,13 @@ tablero::tablero(const string& archivo){
     }
     
     fich.close();
-    
-    for (unsigned int i=0; i < aux.size(); i++)
-        cout << aux[i] << endl;
-    
+      
     pair<unsigned int,unsigned int> par(atoi(aux[0].c_str()),atoi(aux[1].c_str()));
     _tam = par;
     
     string::iterator it;
     vector<char> vc;
-    for(int i=2; i < aux.size(); i++){
+    for(unsigned int i=2; i < aux.size(); i++){
         for ( it=aux[i].begin() ; it < aux[i].end(); it++ )
             vc.push_back(*it);
         _matriz.push_back(vc);
@@ -97,19 +94,20 @@ if (finj > _tam.second)
         //recorrer posiciones adyacentes
         for (unsigned int i = inicioi; i < fini; i++)
             for (unsigned int j= inicioj; j< finj; j++)
-                 if ((_matriz.at(i)).at(j) == aux){
+                if ((_matriz.at(i)).at(j) == aux){
                     _matriz[i][j] = '_';
                     eliminadas++;
-                 }
+                }
         //recolocar bloques libres
         if (eliminadas > 0){
-            for (unsigned int i=1; i< _tam.first; i++)
-                for (unsigned int j=0; j< _tam.second; j++)
-                    if (((_matriz.at(i)).at(j) == '_') and ((_matriz.at(i-1)).at(j) != '_' )){
-                        char a = (_matriz.at(i-1)).at(j);
-                        _matriz[i][j] = a;
-                        _matriz[i-1][j] = '_';
-                    }
+            for (int k = 0; k <3; k++)
+                for (unsigned int i=1; i< _tam.first; i++)
+                    for (unsigned int j=0; j< _tam.second; j++)
+                        if (((_matriz.at(i)).at(j) == '_') and ((_matriz.at(i-1)).at(j) != '_' )){
+                            char a = (_matriz.at(i-1)).at(j);
+                            _matriz[i][j] = a;
+                            _matriz[i-1][j] = '_';
+                        }
         }
      
         return eliminadas;
