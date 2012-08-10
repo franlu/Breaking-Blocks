@@ -1,9 +1,9 @@
-#include "../include/tablero.h"
-
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../include/tablero.h"
 
 tablero::tablero(const pair<unsigned int,unsigned int>& par){
 
