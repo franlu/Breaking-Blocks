@@ -8,12 +8,9 @@
 tablero::tablero(const pair<unsigned int,unsigned int>& par){
 
     _tam = par;
-    list<char> aux(_tam.second);
-    for (unsigned int i = 0 ; i < _tam.first; i++ ){
-        for (unsigned int j = 0 ; j < _tam.second; j++ )
-            aux.push_back('X');
-        _matriz.push_back(aux);
-}
+    list<char> aux(_tam.second,'X');
+    list<list<char> > aux1(_tam.first, aux);
+    _matriz = aux1;
 
 }
 
@@ -62,8 +59,14 @@ tablero::tablero(const string& archivo){
 
 char tablero::preguntar_posicion(const pair<unsigned int,unsigned int>& par) const {
 
-    char t;
-    return t;
+    list<list<char> >::const_iterator it = _matriz.begin();
+    advance(it, par.first);
+    list<char> l1 = *it;
+    
+    list<char>::const_iterator it1 = l1.begin();
+    advance(it1, par.second);
+         
+    return *it1;
 
 }
 
@@ -93,6 +96,7 @@ for (unsigned int i=0; i< tam.first; i++){
         par.second = j;
         os << t.preguntar_posicion(par);
     }
-}    
+}
+    
 return os;
 }
