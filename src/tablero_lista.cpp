@@ -54,10 +54,15 @@ pair<unsigned int,unsigned int> tablero::size() const {
 
 ostream& operator<< (ostream& os, const tablero& t){
 
-/*	for (int i=0; i<t.fil(); i++){
-		os << endl;
-		for (int j=0; j<t.col(); j++)
-			os << t(i,j) << ' ';
+pair<unsigned int,unsigned int> par;
+pair<unsigned int,unsigned int> tam = t.size();
+
+for (int i=0; i< tam.first; i++){
+		os << endl << "\t";
+		for (int j=0; j< tam.second; j++)
+			par.first = i;
+            par.second = j;
+            os << t.preguntar_posicion(par);
 	}
 */
 return os;
